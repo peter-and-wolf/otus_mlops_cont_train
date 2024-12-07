@@ -52,7 +52,7 @@ def main():
     
   logger.info(spark)
 
-  df = spark.read.csv("s3s://mlops204-dataproc-bucket/data/titanic/train.csv", header=True, inferSchema=True)
+  df = spark.read.csv("s3a://mlops204-dataproc-bucket/data/titanic/train.csv", header=True, inferSchema=True)
 
   logger.info(df.limit(10).toPandas())
 
