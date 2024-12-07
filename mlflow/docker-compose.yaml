@@ -4,7 +4,7 @@ services:
     image: postgres
     container_name: mlflow_db
     ports:
-      - "5423:5432"
+      - "5432:5432"
     networks:
       - backend
     environment:
