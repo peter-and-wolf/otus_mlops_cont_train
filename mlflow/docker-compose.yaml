@@ -8,13 +8,13 @@ services:
     networks:
       - backend
     environment:
-      POSTGRES_USER: ${PG_USER}
-      POSTGRES_PASSWORD: ${PG_PASSWORD}
-      POSTGRES_DATABASE: ${PG_DATABASE}
+      POSTGRES_USER: ${MLFLOW_PG_USER}
+      POSTGRES_PASSWORD: ${MLFLOW_PG_PASSWORD}
+      POSTGRES_DATABASE: ${MLFLOW_PG_DATABASE}
     volumes:
       - db_data:/var/lib/postgresql/data/
     healthcheck:
-      test: ["CMD", "pg_isready", "-p", "5432", "-U", "${PG_USER}"]
+      test: ["CMD", "pg_isready", "-p", "5432", "-U", "${POSTGRES_USER}"]
       interval: 5s
       timeout: 5s
       retries: 3
