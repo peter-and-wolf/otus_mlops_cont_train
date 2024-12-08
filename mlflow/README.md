@@ -34,7 +34,7 @@ pip install mlflow
 1. Запустите MLFlow Tracking Server, который будет сохранять метрики в Postgres в докере, а модели и прочие артефакты – в S3-бакете в YC.
 
 ```bash
-mlflow server --backend-store-uri postgresql://${MLFLOW_PG_USER}:${MLFLOW_PG_PASSWORD}@localhost:5423/${MLFLOW_PG_DATABASE} --default-artifact-root s3://otus-mlflow-bucket/artifacts -h 0.0.0.0 -p 8000
+mlflow server --backend-store-uri postgresql://${MLFLOW_PG_USER}:${MLFLOW_PG_PASSWORD}@localhost:5432/${MLFLOW_PG_DATABASE} --default-artifact-root s3://otus-mlflow-bucket/artifacts -h 0.0.0.0 -p 8000
 ```
 
 
