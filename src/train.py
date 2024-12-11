@@ -79,13 +79,8 @@ def main():
   
   spark = SparkSession\
     .builder\
-    .master('local[*]')\
     .appName('Spark ML Research')\
     .config('spark.sql.repl.eagerEval.enabled', True) \
-    .config("spark.hadoop.fs.s3a.access.key", os.environ['AWS_ACCESS_KEY_ID']) \
-    .config("spark.hadoop.fs.s3a.secret.key", os.environ['AWS_SECRET_ACCESS_KEY']) \
-    .config('spark.hadoop.fs.s3.impl', 'org.apache.hadoop.fs.s3a.S3AFileSystem') \
-    .config('spark.yarn.dist.archives', 's3a://pyspark-venvs/mlflow-hyperopt-dataproc-2.1.18.tar.gz#venv')\
     .getOrCreate()
     
   logger.info(spark)
