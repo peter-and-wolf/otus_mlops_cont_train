@@ -76,8 +76,6 @@ def objective(params, train_data, test_data):
 
 
 def main():
-  trials = SparkTrials(spark_session=spark)
-
 
   logger.info("Creating Spark Session ...")
   
@@ -114,7 +112,7 @@ def main():
 
   train_data, test_data = ready_data.randomSplit([.7, .3])
 
-  trials = Trials()
+  trials = SparkTrials(spark_session=spark)
 
   mlflow.set_experiment('classification')
 
