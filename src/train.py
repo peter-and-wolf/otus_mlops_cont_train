@@ -3,7 +3,7 @@ import logging
 from functools import partial
 
 import mlflow
-from hyperopt import fmin, tpe, hp, STATUS_OK, Trials, SparkTrials
+from hyperopt import fmin, tpe, hp, STATUS_OK, Trials, SparkTrials # type: ignore
 
 from pyspark.sql import SparkSession
 from pyspark.ml.feature import VectorAssembler, OneHotEncoder, StringIndexer
