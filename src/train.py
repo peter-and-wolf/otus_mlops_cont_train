@@ -69,6 +69,7 @@ def objective(params, train_data, test_data):
   auc = evaluator.evaluate(lg_model.transform(test_data))
 
   with mlflow.start_run():
+    mlflow.set_tag('experimentalist', 'robot')
     mlflow.log_params(params)
     mlflow.log_metric('auc', auc)
   
