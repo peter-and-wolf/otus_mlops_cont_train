@@ -1,3 +1,4 @@
+import os
 import logging
 from functools import partial
 
@@ -15,7 +16,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)-15s %(message)s")
 logger = logging.getLogger()
 
 
-def data_prep_pipeline(spark):
+def data_prep_pipeline():
   
   gender_index = StringIndexer(inputCol='Sex', outputCol='SexIndex')
   gender_encoder = OneHotEncoder(inputCol='SexIndex', outputCol='SexVector')
@@ -75,6 +76,9 @@ def objective(params, train_data, test_data):
 
 
 def main():
+  trials = SparkTrials(spark_session=spark)
+
+
   logger.info("Creating Spark Session ...")
   
   spark = SparkSession\
@@ -110,7 +114,7 @@ def main():
 
   train_data, test_data = ready_data.randomSplit([.7, .3])
 
-  trials = SparkTrials()
+  trials = SparkTrials(spark_session=spark)
 
   mlflow.set_experiment('classification')
 
@@ -128,4 +132,8 @@ def main():
 
 
 if __name__ == "__main__":
+
+  os.environ['MLFLOW_S3_ENDPOINT_URL'] = 'https://storage.yandexcloud.net'
+  os.environ['MLFLOW_TRACKING_URI']='http://10.0.0.35:8000'
+
   main()
