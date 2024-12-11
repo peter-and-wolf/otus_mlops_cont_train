@@ -112,7 +112,7 @@ def main():
 
   train_data, test_data = ready_data.randomSplit([.7, .3])
 
-  trials = SparkTrials(spark_session=spark)
+  trials = Trials()
 
   mlflow.set_experiment('classification')
 
